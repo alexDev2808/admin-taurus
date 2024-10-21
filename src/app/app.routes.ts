@@ -17,6 +17,14 @@ export const routes: Routes = [
             {
                 path: 'comunicados',
                 loadComponent: () => import('./pages/carrusel/components/comunicados/comunicados.component').then(m => m.ComunicadosComponent)
+            },
+            {
+                path: 'inyeccion',
+                loadComponent: () => import('./pages/carrusel/components/inyeccion/inyeccion.component').then(m => m.InyeccionComponent)
+            },
+            {
+                path: 'ensamble',
+                loadComponent: () => import('./pages/carrusel/components/ensamble/ensamble.component').then(m => m.EnsambleComponent)
             }
         ],
     },

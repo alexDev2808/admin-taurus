@@ -8,10 +8,12 @@
 <mat-drawer-container class="home-container" autosize>
     <mat-drawer #drawer class="home-sidenav" mode="side">
       <p class="fw-bolder fs-4">Taurus Tlaxcala</p>
-      <div class="d-flex flex-column gap-1">
+      <div class="d-flex flex-column gap-2 p-1">
         <button 
             routerLink="/"
-            mat-raised-button>
+            mat-fab
+            extended
+            color="primary">
             Inicio
         </button>
 
@@ -19,7 +21,9 @@
 
         <button 
             (click)="showCarruseles = !showCarruseles"
-            mat-raised-button>
+            mat-fab
+            color="primary"
+            extended>
             Carruseles
         </button>
 
@@ -31,12 +35,12 @@
                     Comunicados
                 </button>
                 <button 
-                    routerLink="/"
+                    routerLink="carrusel/inyeccion"
                     mat-raised-button>
                     Inyección
                 </button>
                 <button 
-                    routerLink="/"
+                    routerLink="carrusel/ensamble"
                     mat-raised-button>
                     Ensamble
                 </button>
@@ -46,7 +50,9 @@
         <hr>
         <button 
             (click)="showSheets = !showSheets"
-            mat-raised-button>
+            mat-fab
+            extended
+            color="primary">
             Sheets
         </button>
 
@@ -57,7 +63,9 @@
         <hr>
         <button 
             (click)="showConfiguraciones = !showConfiguraciones"
-            mat-raised-button>
+            mat-fab
+            extended
+            color="primary">
             Configuraciones
         </button>
 
