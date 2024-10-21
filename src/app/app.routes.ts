@@ -11,6 +11,16 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/notfound/notfound.component').then(m => m.NotfoundComponent),
     },
     {
+        path: 'carrusel',
+        loadComponent: () => import('./pages/carrusel/carrusel.component').then(m => m.CarruselComponent),
+        children: [
+            {
+                path: 'comunicados',
+                loadComponent: () => import('./pages/carrusel/components/comunicados/comunicados.component').then(m => m.ComunicadosComponent)
+            }
+        ],
+    },
+    {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
