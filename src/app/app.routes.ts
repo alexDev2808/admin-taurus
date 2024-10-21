@@ -1,23 +1,22 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { AppComponent } from './app.component';
-import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 export const routes: Routes = [
     {
         path: 'home',
-        component: HomeComponent
+        loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
     },
     {
         path: 'notfound',
-        component: NotfoundComponent,
+        loadComponent: () => import('./pages/notfound/notfound.component').then(m => m.NotfoundComponent),
+    },
+    {
+        path: '',
+        redirectTo: '/home',
         pathMatch: 'full'
     },
-    // {
-    //     path: '**',
-    //     redirectTo: 'notfound',
-    //     pathMatch: 'full'
-    // }
-    
-
+    {
+        path: '**',
+        redirectTo: '/notfound'
+    }
 ];
