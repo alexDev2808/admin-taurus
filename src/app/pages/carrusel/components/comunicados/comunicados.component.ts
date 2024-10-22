@@ -3,14 +3,12 @@ import { Slider, SliderItem } from '../../../../interfaces/Slider';
 import { SliderService } from '../../../../services/slider.service';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommonModule } from '@angular/common';
-import { SafePipe } from '../../../../pipes/safe.pipe';
 
 @Component({
   selector: 'app-comunicados',
   standalone: true,
   imports: [
     SlickCarouselModule,
-    SafePipe,
     CommonModule,
   ],
   templateUrl: './comunicados.component.html',
@@ -23,8 +21,7 @@ export class ComunicadosComponent implements OnInit {
   @ViewChild('btnPlay') btnPlay!: ElementRef;
   @ViewChild('btnNext') btnNext!: ElementRef;
 
-  public widthScreen: any
-  public heigthScreen: any
+
   public isPaused: boolean = true
   public isLoading: boolean = true
 
@@ -36,12 +33,11 @@ export class ComunicadosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.heigthScreen = window.innerHeight * 1.1
-    this.widthScreen = window.innerWidth
+
   }
 
-  get data(): Slider {
-    return this.slidesService.getData()
+  get data(): SliderItem[] {
+    return this.slidesService.getDataComunicados()
   }
 
   onPauseButton() {
@@ -69,7 +65,7 @@ export class ComunicadosComponent implements OnInit {
   }
 
   beforeChange(e:any) {
-    if(this.data.slides[e.nextSlide].ext === 'mp4'){
+    if(this.data[e.nextSlide].ext === 'mp4'){
    
       const element = this.videoHTML.nativeElement;
       const duration = 1000 * Math.floor(element.duration)
@@ -93,7 +89,7 @@ export class ComunicadosComponent implements OnInit {
   }
 
   setFileExtension(){
-    this.data.slides.forEach( (file:SliderItem) => {
+    this.data.forEach( (file:SliderItem) => {
       if(file.ext !== "frame") {
         file.ext = this.getFileExtension(file.item)
       }
