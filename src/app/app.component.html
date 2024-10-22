@@ -60,7 +60,26 @@
         </button>
 
         @if (showSheets) {
-            <p>Lorem, ipsum dolor sit amet consectetur.</p>
+            <div class="d-flex pt-1 justify-content-center flex-column gap-2">
+                <button 
+                    routerLink="sheet/inyeccion"
+                    (click)="drawer.toggle()"
+                    mat-raised-button>
+                    Inyección
+                </button>
+                <button 
+                    routerLink="sheet/estampado"
+                    (click)="drawer.toggle()"
+                    mat-raised-button>
+                    Estampado
+                </button>
+                <button 
+                    routerLink="sheet/ensamble"
+                    (click)="drawer.toggle()"
+                    mat-raised-button>
+                    Ensamble
+                </button>
+            </div>
         }
 
         <hr>
@@ -73,7 +92,26 @@
         </button>
 
         @if (showConfiguraciones) {
-            <p>Lorem, ipsum dolor sit amet consectetur.</p>
+            <div class="d-flex pt-1 justify-content-center flex-column gap-2">
+                <button 
+                    routerLink="configuration/comunicados"
+                    (click)="drawer.toggle()"
+                    mat-raised-button>
+                    Comunicados
+                </button>
+                <button 
+                    routerLink="configuration/inyeccion"
+                    (click)="drawer.toggle()"
+                    mat-raised-button>
+                    Inyección
+                </button>
+                <button 
+                    routerLink="configuration/ensamble"
+                    (click)="drawer.toggle()"
+                    mat-raised-button>
+                    Ensamble
+                </button>
+            </div>
         }
 
       </div>
