@@ -4,6 +4,7 @@ import { SafePipe } from '../../../../pipes/safe.pipe';
 import { CommonModule } from '@angular/common';
 import { SliderItem } from '../../../../interfaces/Slider';
 import { SliderService } from '../../../../services/slider.service';
+import { LoaderComponent } from "../../../../shared/loader/loader.component";
 
 @Component({
   selector: 'app-inyeccion',
@@ -11,8 +12,9 @@ import { SliderService } from '../../../../services/slider.service';
   imports: [
     SlickCarouselModule,
     SafePipe,
-    CommonModule
-  ],
+    CommonModule,
+    LoaderComponent
+],
   templateUrl: './inyeccion.component.html',
   styleUrl: './inyeccion.component.scss'
 })

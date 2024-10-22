@@ -6,9 +6,13 @@
   }
 
   .sidenav {
-    width: 100%;
+    width: 50px;
     height: 35px;
-    background-color: #FFF;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
   }
 
   .home-container {
@@ -23,6 +27,7 @@
   
   .home-sidenav {
     padding: 20px;
+    padding-top: 40px;
   }
 
   .btn-menu {

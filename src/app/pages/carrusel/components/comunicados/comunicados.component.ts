@@ -3,6 +3,7 @@ import { Slider, SliderItem } from '../../../../interfaces/Slider';
 import { SliderService } from '../../../../services/slider.service';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from "../../../../shared/loader/loader.component";
 
 @Component({
   selector: 'app-comunicados',
@@ -10,7 +11,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     SlickCarouselModule,
     CommonModule,
-  ],
+    LoaderComponent
+],
   templateUrl: './comunicados.component.html',
   styleUrl: './comunicados.component.scss'
 })

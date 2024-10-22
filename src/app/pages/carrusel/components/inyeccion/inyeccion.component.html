@@ -1,5 +1,5 @@
 <div class="contenedor">
-    <div class="d-flex mt-1 justify-content-center">
+    <div class="d-flex mt-1 justify-content-md-center">
       <button
         [ngStyle]="{ display: !isPaused ? 'flex':'none'}"
         #btnPausar
@@ -18,40 +18,32 @@
         >
         <img src="../../../assets/icons/play.svg" alt="Play">
       </button>
-      
-      <button
-        #btnNext
-        class="d-none"
-        (click)="slickModal.slickNext()"
-        >
-        >
-      </button>
     </div>
+
     
-    <div class="s-container">
-      <ngx-slick-carousel
-        class="carousel"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-        (init)="slickInit($event)"
-        (breakpoint)="breakpoint($event)"
-        (beforeChange)="beforeChange($event)">
-          <div ngxSlickItem *ngFor="let slide of data" class="slide">
-            <iframe
-              width="100%"
-              [height]="heigthScreen"
-              [src]="slide.item | safe"
-              loading="lazy"
-              sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-              >
-            </iframe>
-          </div>
-      </ngx-slick-carousel>
-    </div>
+    <ngx-slick-carousel
+      class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig"
+      (init)="slickInit($event)"
+      (breakpoint)="breakpoint($event)"
+      (beforeChange)="beforeChange($event)">
+        
+        <div ngxSlickItem *ngFor="let slide of data" class="slide">
+          <iframe
+            width="100%"
+            [height]="heigthScreen"
+            [src]="slide.item | safe"
+            loading="lazy"
+            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            >
+          </iframe>
+        </div>
+    </ngx-slick-carousel>
   
-    <!-- @if( isLoading ){
+    @if( isLoading ){
       <shared-loader></shared-loader>
-    } -->
+    }
   
   </div>
 
