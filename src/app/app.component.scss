@@ -16,13 +16,14 @@
   }
 
   .home-container {
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
   }
   
   .home-sidenav-content {
     width: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
   }
   
   .home-sidenav {

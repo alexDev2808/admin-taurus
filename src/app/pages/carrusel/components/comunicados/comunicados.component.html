@@ -41,7 +41,8 @@
               *ngIf="slide.ext !== 'mp4'; else videoFormat"
               src="../../../assets/img/{{ slide.item }}"
               alt=""
-              width="100%">
+              width="100%"
+              >
             <ng-template #videoFormat>
               <video
                 #video

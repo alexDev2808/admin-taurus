@@ -31,16 +31,19 @@
             <div class="d-flex pt-1 justify-content-center flex-column gap-2">
                 <button 
                     routerLink="carrusel/comunicados"
+                    (click)="drawer.toggle()"
                     mat-raised-button>
                     Comunicados
                 </button>
                 <button 
                     routerLink="carrusel/inyeccion"
+                    (click)="drawer.toggle()"
                     mat-raised-button>
                     Inyección
                 </button>
                 <button 
                     routerLink="carrusel/ensamble"
+                    (click)="drawer.toggle()"
                     mat-raised-button>
                     Ensamble
                 </button>
