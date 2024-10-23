@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
     {
@@ -50,7 +49,18 @@ export const routes: Routes = [
         path: 'sheet',
         loadComponent: () => import('./pages/sheet/sheet.component').then(m => m.SheetComponent),
         children: [
-            
+            {
+                path: 'inyeccion',
+                loadComponent: () => import('./pages/sheet/components/inyeccion/inyeccion.component').then(m => m.InyeccionComponent)
+            },
+            {
+                path: 'estampado',
+                loadComponent: () => import('./pages/sheet/components/estampado/estampado.component').then(m => m.EstampadoComponent)
+            },
+            {
+                path: 'ensamble',
+                loadComponent: () => import('./pages/sheet/components/ensamble/ensamble.component').then(m => m.EnsambleComponent)
+            },
         ]
     },
     {
