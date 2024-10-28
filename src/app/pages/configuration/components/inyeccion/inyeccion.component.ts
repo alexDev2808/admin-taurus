@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { SliderService } from '../../../../services/slider.service';
 import Swal from 'sweetalert2';
+import { v4 as uuid } from 'uuid';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-inyeccion',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './inyeccion.component.html',
   styleUrl: './inyeccion.component.scss'
 })
 export class InyeccionComponent {
+
+  @ViewChild('txtName') inputName!: ElementRef;
+  @ViewChild('txtURL') inputURL!: ElementRef;
+  showModal = false;
+  isModalActive = false;
 
   constructor(
     private sliderService: SliderService
@@ -19,38 +26,35 @@ export class InyeccionComponent {
     return this.sliderService.getDataInyeccion();
   }
 
-  agregar() {
+  showModalToggle() {
+    this.showModal = !this.showModal
+  }
+
+  successAlert() {
     Swal.fire({
-      title: 'Agregar elemento',
-      showCancelButton: true,
-      cancelButtonColor: "#B7B7B7",
-      cancelButtonText: "Cancelar",
-      confirmButtonColor: "#024CAA",
-      confirmButtonText: 'Agregar',
-      html: 
-      `
-      <form>
-          <div class="mb-3">
-              <label for="label-name" class="form-label">Nombre: </label>
-              <input type="text" class="form-control" id="label-name" aria-describedby="label-name-help">
-              <div id="label-name-help" class="form-text">Ingresa el nombre con el que identificaras al elemento.</div>
-          </div>
-          <div class="mb-3">
-              <label for="label-url" class="form-label">URL: </label>
-              <input type="text" class="form-control" id="label-url" aria-describedby="label-url-help">
-              <div id="label-url-help" class="form-text">Ingresa la URL asociada al elemento.</div>
-          </div>
-      </form>
-      `
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Agregado!",
-          text: "El elemento ha sido agregado!",
-          icon: "success"
-        });
-      }
-    });
+      icon: 'success',
+      text: 'Agregado correctamente',
+      timer: 1500,
+      timerProgressBar: true,
+    })
+  }
+
+  agregar() {
+    
+    const name = this.inputName.nativeElement.value
+    const url = this.inputURL.nativeElement.value
+
+    this.dataInyeccion.push({
+      "id": uuid(),
+      "name": name,
+      "item": url,
+      "ext": "",
+      "duration": 0,
+      "frame": true
+    })
+
+    this.successAlert()
+    this.showModalToggle()
   }
 
   editar() {
