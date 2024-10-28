@@ -4,12 +4,15 @@
         <div class="d-flex justify-content-between">
             <h4>Listado de elementos: </h4>
 
-            <button class="btn btn-success">
+            <button 
+                type="button"
+                (click)="agregar()"
+                class="btn btn-custom">
                 Agregar
             </button>
         </div>
 
-        <div class="d-flex flex-column gap-2">
+        <div class="d-flex flex-column gap-2 mt-4">
             @for (item of dataInyeccion; track $index) {
                 <div class="d-flex justify-content-between border-1 border-black border rounded-1 p-2">
                     <h5>{{ $index + 1}}. {{ item.name }}</h5>
@@ -30,3 +33,6 @@
         </div>
     </div>
 </div>
+
+
+  
