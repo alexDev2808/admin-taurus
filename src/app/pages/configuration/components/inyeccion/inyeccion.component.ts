@@ -3,6 +3,7 @@ import { SliderService } from '../../../../services/slider.service';
 import Swal from 'sweetalert2';
 import { v4 as uuid } from 'uuid';
 import { CommonModule } from '@angular/common';
+import { SliderItem } from '../../../../interfaces/Slider';
 
 @Component({
   selector: 'app-inyeccion',
@@ -74,7 +75,8 @@ export class InyeccionComponent {
     this.showModalToggle()
   }
 
-  editar() {
+  editar(item: SliderItem) {
+    const element = this.sliderService.getDataInyeccionById(item)
     
   }
 

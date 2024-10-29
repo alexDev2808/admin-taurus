@@ -126,6 +126,22 @@ export class SliderService {
     return this.dataInyeccion;
   }
 
+  getDataInyeccionById(item: SliderItem) {
+    const element = this.dataInyeccion.find(elem => elem.id === item.id)
+
+    if(element) {
+      return {
+        'status': 200,
+        element
+      }
+    }
+
+    return {
+      'status': 404,
+      'message': 'Elemento no encontrado'
+    }
+  }
+
   deleteItemInyeccion(index: number) {
     const element = this.dataInyeccion[index];
     if (element) {
