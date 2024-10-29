@@ -15,8 +15,11 @@ export class InyeccionComponent {
 
   @ViewChild('txtName') inputName!: ElementRef;
   @ViewChild('txtURL') inputURL!: ElementRef;
+
   showModal = false;
   isModalActive = false;
+  nameError = false;
+  urlError = false;
 
   constructor(
     private sliderService: SliderService
@@ -27,7 +30,11 @@ export class InyeccionComponent {
   }
 
   showModalToggle() {
-    this.showModal = !this.showModal
+    this.showModal = !this.showModal  
+    this.inputName.nativeElement.value = ''
+    this.inputURL.nativeElement.value = ''
+    this.urlError = false
+    this.nameError = false
   }
 
   successAlert() {
@@ -44,6 +51,16 @@ export class InyeccionComponent {
     const name = this.inputName.nativeElement.value
     const url = this.inputURL.nativeElement.value
 
+    if(name === '') {
+      this.nameError = true
+      return
+    }
+
+    if(url === ''){
+      this.urlError = true
+      return
+    }
+
     this.dataInyeccion.push({
       "id": uuid(),
       "name": name,
@@ -58,43 +75,7 @@ export class InyeccionComponent {
   }
 
   editar() {
-    Swal.fire({
-      title: "Editar:",
-      text: 'Ingresa el nombre:',
-      input: "text",
-      inputAttributes: {
-        autocapitalize: "off"
-      },
-      showCancelButton: true,
-      confirmButtonText: "Modificar",
-      showLoaderOnConfirm: true,
-      preConfirm: async (login) => {
-        try {
-          const githubUrl = `
-            https://api.github.com/users/${login}
-          `;
-          const response = await fetch(githubUrl);
-          if (!response.ok) {
-            return Swal.showValidationMessage(`
-              ${JSON.stringify(await response.json())}
-            `);
-          }
-          return response.json();
-        } catch (error) {
-          Swal.showValidationMessage(`
-            Request failed: ${error}
-          `);
-        }
-      },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: `${result.value.login}'s avatar`,
-          imageUrl: result.value.avatar_url
-        });
-      }
-    });
+    
   }
 
   eliminar(index: number) {

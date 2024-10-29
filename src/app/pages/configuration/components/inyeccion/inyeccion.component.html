@@ -1,5 +1,5 @@
 
-<div class="row conf-container">
+<div class="conf-container">
     <div class="col px-5 pt-5">
         <div class="d-flex justify-content-between">
             <h4>Listado de elementos: </h4>
@@ -35,32 +35,36 @@
 
 
 
-@if ( showModal ) {
-    <div class="modal-container animate__animated">
-            <div class="modal-bg"></div>
-            <div class="card-modal">
-                <div class="d-flex justify-content-between">
-                    <h3>Agregar elemento</h3>
-                    <button
-                        (click)="showModalToggle()" 
-                        class="btn btn-outline-danger">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
-                </div>
-                <form>
-                    <div class="mb-3">
-                      <label for="name" class="form-label">Nombre</label>
-                      <input #txtName type="text" class="form-control" id="name" aria-describedby="nameHelp">
-                      <div id="nameHelp" class="form-text">Agrega el nombre con el que identificaras al elemento.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="url" class="form-label">URL</label>
-                      <input #txtURL type="text" class="form-control" id="url" aria-describedby="urlHelp">
-                      <div id="urlHelp" class="form-text">Agrega la URL del elemento.</div>
-                    </div>
-                    
-                    <button (click)="agregar()" type="button" class="btn btn-custom">Agregar</button>
-                  </form>
+<div class="modal-container " [ngClass]="{'show-modal': showModal }" >
+        <div class="modal-bg"></div>
+        <div class="card-modal">
+            <div class="d-flex justify-content-between">
+                <h3>Agregar elemento</h3>
+                <button
+                    (click)="showModalToggle()" 
+                    class="btn btn-outline-danger">
+                    <i class="bi bi-x-lg"></i>
+                </button>
             </div>
-    </div>
-}
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input #txtName type="text" class="form-control" id="name" aria-describedby="nameHelp">
+                    @if ( nameError ) {
+                        <p class="form-text text-danger">El nombre es requerido.</p>
+                    }
+                    <div id="nameHelp" class="form-text">Agrega el nombre con el que identificaras al elemento.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="url" class="form-label">URL</label>
+                    <input #txtURL type="text" class="form-control" id="url" aria-describedby="urlHelp" >
+                    @if ( urlError ) {
+                        <p class="form-text text-danger">El URL es requerida.</p>
+                    }
+                    <div id="urlHelp" class="form-text">Agrega la URL del elemento.</div>
+                </div>
+                
+                <button (click)="agregar()" type="button" class="btn btn-custom">Agregar</button>
+                </form>
+        </div>
+</div>
