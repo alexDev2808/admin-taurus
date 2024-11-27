@@ -11,16 +11,16 @@ export class SliderService {
   private dataComunicados: SliderItem[] = [
     {
       "id": "1",
-      "name": "Imagen 1",
-      "item": "1-80.jpg",
+      "name": "Tablero Taurus",
+      "item": "tablero.jpg",
       "ext": "",
       "duration": 0,
       "frame": false
     },
     {
       "id": "2",
-      "name": "Imagen 2",
-      "item": "2-80.jpg",
+      "name": "Dias Feriados",
+      "item": "diasFeriados.jpg",
       "ext": "",
       "duration": 0,
       "frame": false
@@ -28,15 +28,24 @@ export class SliderService {
     },
     {
       "id": "3",
-      "name": "Video 1",
-      "item": "video1.mp4",
+      "name": "Calidad Taurus",
+      "item": "calidad.jpg",
       "ext": "",
       "duration": 0,
       "frame": false
     },
     {
       "id": "4",
-      "name": "Imagen 3",
+      "name": "Organigrama",
+      "item": "organigrama.jpg",
+      "ext": "",
+      "duration": 0,
+      "frame": false
+
+    },
+    {
+      "id": "5",
+      "name": "5s",
       "item": "5_s.jpeg",
       "ext": "",
       "duration": 0,
@@ -44,14 +53,59 @@ export class SliderService {
 
     },
     {
-      "id": "",
-      "name": "Imagen 4",
-      "item": "6-80.jpg",
+      "id": "6",
+      "name": "Mapa Estrategico",
+      "item": "mapaEst.jpg",
       "ext": "",
       "duration": 0,
       "frame": false
 
-    }
+    },
+    {
+      "id": "7",
+      "name": "Outlet",
+      "item": "outlet.jpg",
+      "ext": "",
+      "duration": 0,
+      "frame": false
+
+    },
+    {
+      "id": "8",
+      "name": "Venta Interna",
+      "item": "ventaInterna.jpg",
+      "ext": "",
+      "duration": 0,
+      "frame": false
+
+    },
+    {
+      "id": "9",
+      "name": "Cumpleaños",
+      "item": "cumple.jpg",
+      "ext": "",
+      "duration": 0,
+      "frame": false
+
+    },
+    {
+      "id": "10",
+      "name": "Honestometro",
+      "item": "honestometro.jpg",
+      "ext": "",
+      "duration": 0,
+      "frame": false
+
+    },
+    {
+      "id": "11",
+      "name": "Cumplimiento",
+      "item": "cumplimiento.jpg",
+      "ext": "",
+      "duration": 0,
+      "frame": false
+
+    },
   ]
 
   private dataInyeccion: SliderItem[] = [
@@ -113,6 +167,41 @@ export class SliderService {
     }
   ]
 
+  private dataEnsamble: SliderItem[] = [
+    {
+      "id": uuid(),
+      "name": "OEE Ensamble",
+      "item": "https://lookerstudio.google.com/embed/reporting/e687bb67-03ce-4d1b-b100-585d7d7e8c7e/page/yM8RE",
+      "ext": "",
+      "duration": 0,
+      "frame": true
+    },
+    {
+      "id": uuid(),
+      "name": "OEE Ensamble - Disponibilidad",
+      "item": "https://lookerstudio.google.com/embed/reporting/e687bb67-03ce-4d1b-b100-585d7d7e8c7e/page/p_hygqsk2xmd",
+      "ext": "",
+      "duration": 0,
+      "frame": true
+    },
+    {
+      "id": uuid(),
+      "name": "OEE Ensamble - Eficiencia",
+      "item": "https://lookerstudio.google.com/embed/reporting/e687bb67-03ce-4d1b-b100-585d7d7e8c7e/page/p_rhblmi4xmd",
+      "ext": "",
+      "duration": 0,
+      "frame": true
+    },
+    {
+      "id": uuid(),
+      "name": "OEE Ensamble - Calidad",
+      "item": "https://lookerstudio.google.com/embed/reporting/e687bb67-03ce-4d1b-b100-585d7d7e8c7e/page/p_cyq5pi4xmd",
+      "ext": "",
+      "duration": 0,
+      "frame": true
+    },
+  ]
+
   constructor( ) {
     this.dataInyeccion
   }
@@ -124,6 +213,10 @@ export class SliderService {
 
   getDataInyeccion(): SliderItem[] {
     return this.dataInyeccion;
+  }
+
+  getDataEnsamble(): SliderItem[] {
+    return this.dataEnsamble;
   }
 
   getDataInyeccionById(item: SliderItem) {

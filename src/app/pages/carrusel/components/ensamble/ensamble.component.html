@@ -1,1 +1,50 @@
-<p>ensamble works!</p>
+<div class="contenedor">
+    <div class="d-flex mt-1 justify-content-md-center">
+      <button
+        [ngStyle]="{ display: !isPaused ? 'flex':'none'}"
+        #btnPausar
+        class="btn btn-light align-items-center"
+        (click)="slickModal.slickPause()"
+        (click)="onPauseButton()"
+        >
+        <img src="../../../assets/icons/pause.svg" alt="Pause">
+      </button>
+      <button
+        [ngStyle]="{ display: isPaused ? 'flex':'none'}"
+        #btnPlay
+        class="btn btn-light align-items-center"
+        (click)="slickModal.slickPlay()"
+        (click)="onPauseButton()"
+        >
+        <img src="../../../assets/icons/play.svg" alt="Play">
+      </button>
+    </div>
+
+    
+    <ngx-slick-carousel
+      class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig"
+      (init)="slickInit($event)"
+      (breakpoint)="breakpoint($event)"
+      (beforeChange)="beforeChange($event)">
+        
+        <div ngxSlickItem *ngFor="let slide of data" class="slide">
+          <iframe
+            width="100%"
+            [height]="heigthScreen"
+            [src]="slide.item | safe"
+            loading="lazy"
+            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            >
+          </iframe>
+        </div>
+    </ngx-slick-carousel>
+  
+    @if( isLoading ){
+      <shared-loader></shared-loader>
+    }
+  
+  </div>
+
+
